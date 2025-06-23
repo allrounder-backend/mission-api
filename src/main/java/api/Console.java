@@ -3,6 +3,7 @@ package api;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -28,7 +29,7 @@ public class Console {
     private static String getMockInput() {
         Queue<String> queue = mockInput.get();
         if (queue == null || queue.isEmpty()) {
-            throw new RuntimeException("[Console] Mock input is not set.");
+            throw new NoSuchElementException("[Console] Mock input is not set.");
         }
         return queue.poll();
     }
