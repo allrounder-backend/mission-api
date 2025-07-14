@@ -10,16 +10,21 @@ public abstract class TestEnvironment {
 
     public void run(String... inputs) {
         Console.setMockInput(inputs);
-        System.setOut(new PrintStream(outContent));
-        runMain();
-        System.setOut(originalOut);
+        runLogic();
     }
 
     public void run(List<String> inputs) {
         Console.setMockInput(inputs);
-        System.setOut(new PrintStream(outContent));
-        runMain();
-        System.setOut(originalOut);
+        runLogic();
+    }
+
+    private void runLogic() {
+        System.setOut(new TeePrintStream(outContent, originalOut));
+        try {
+            runMain();
+        } finally {
+            System.setOut(originalOut);
+        }
     }
 
     public String output() {
