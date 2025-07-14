@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import api.Application;
+import api.Console;
 import api.TestEnvironment;
 import org.junit.jupiter.api.*;
 
@@ -27,6 +27,11 @@ public class ApplicationTest extends TestEnvironment {
 
     @Override
      public void runMain() {
-        Application.main(new String[]{});
+        System.out.println("이름을 입력하세요:");
+        String name = Console.readLine();
+
+        //throw new IllegalArgumentException();
+
+        System.out.println("안녕하세요, " + name + "님!");
     }
 }

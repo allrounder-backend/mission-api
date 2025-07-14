@@ -1,6 +1,6 @@
 package api;
 
-public class Application {
+class Application {
     public static void main(String[] args) {
         System.out.println("이름을 입력하세요:");
         String name = Console.readLine();
