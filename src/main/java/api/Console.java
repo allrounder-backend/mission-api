@@ -13,7 +13,9 @@ public class Console {
 
     public static String readLine() {
         if (isTestEnvironment()) {
-            return getMockInput();
+            String answer = getMockInput();
+            System.out.println("> " + answer);
+            return answer;
         }
         return scanner.nextLine();
     }
@@ -29,7 +31,7 @@ public class Console {
     private static String getMockInput() {
         Queue<String> queue = mockInput.get();
         if (queue == null || queue.isEmpty()) {
-            throw new NoSuchElementException("[Console] Mock input is not set.");
+            throw new NoSuchElementException("[Console] Mock 의 입력이 설정되지 않았습니다. (입력 큐가 비어있습니다.)");
         }
         return queue.poll();
     }
